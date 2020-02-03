@@ -24,4 +24,15 @@ body {
     background-repeat: no-repeat;
     min-height: calc(100vh - 2 * 4vw); }
 
+.container {
+    max-width: 120 rem;
+    margin: 4vw auto;
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2rem 6 rem 0.5 rem rgba(101, 90, 86, 0.2);
+    display: grid;
+    grid-template-rows: 10 rem minmax(100rem, auto);
+    grid-template-columns: 1.1fr 2fr 1.1fr;
+    grid-template-areas: "head head head" "list recipe shopping"; }
     
