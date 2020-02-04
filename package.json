@@ -1,0 +1,23 @@
+{
+  "name": "mymenu",
+  "version": "1.0.0",
+  "description": "mymenu project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattdenune/MyMenu.git"
+  },
+  "author": "Matt Denune",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mattdenune/MyMenu/issues"
+  },
+  "homepage": "https://github.com/mattdenune/MyMenu#readme",
+  "devDependencies": {
+    "webpack": "^4.41.5"
+  },
+  "dependencies": {}
+}
