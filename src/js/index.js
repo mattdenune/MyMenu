@@ -1,5 +1,5 @@
 import Search from './models/Search';
-import { elements } from './views/base';
+import { elements, renderLoader, clearLoader } from './views/base';
 import * as searchView from './views/searchView';
 
 // forkify - api.herokuapp.com 
@@ -29,12 +29,14 @@ const controlSearch = async () => {
         //3. Prepare UI for results
         searchView.clearInput();
         searchView.clearResults();
+        renderLoader(elements.searchRes);
 
 
         //4. Search for recipes
         await state.search.getResults();
 
         //5. Render results on UI
+        clearLoader();
         searchView.renderResults(state.search.result);
     }
 }
