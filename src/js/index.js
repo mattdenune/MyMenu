@@ -1,6 +1,7 @@
 import Search from './models/Search';
 import { elements, renderLoader, clearLoader } from './views/base';
 import * as searchView from './views/searchView';
+import * as recipeView from './views/recipeView';
 import Recipe from './models/Recipe';
 
 // forkify - api.herokuapp.com 
@@ -21,8 +22,7 @@ const state = {};
 // --- SEARCH CONTROLLER ---
 const controlSearch = async () => {
     //1. Get query from view
-    // const query = searchView.getInput().toString();
-    const query = 'pizza';
+    const query = searchView.getInput().toString();
 
 
 
@@ -56,12 +56,6 @@ elements.searchForm.addEventListener('submit', e => {
     controlSearch();
 });
 
-// TESTING
-window.addEventListener('load', e => {
-    e.preventDefault();
-    controlSearch();
-});
-
 elements.searchResPages.addEventListener('click', e => {
     const btn = e.target.closest('.btn-inline');
     if (btn) {
@@ -80,24 +74,26 @@ const controlRecipe = async () => {
 
     if (id) {
         // Prepare UI for changes
-
+        recipeView.clearRecipe();
+        renderLoader(elements.recipe);
 
         // Create new recipe objects
         state.recipe = new Recipe(id);
 
-        // TESTING
-        window.r = state.recipe;
 
         try{
-            // Get recipe data
+            // Get recipe data and parse ingredients
             await state.recipe.getRecipe();
+            console.log(state.recipe.ingredients);
+            state.recipe.parseIngredients();
 
             // Calculate servings and time
             state.recipe.calcTime();
             state.recipe.calcServings();
             
             // Render recipe
-            console.log(state.recipe);
+            clearLoader();
+            recipeView.renderRecipe(state.recipe);
 
         } catch (error) {
             alert('Error processing recipe!');
