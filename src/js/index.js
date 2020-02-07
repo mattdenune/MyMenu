@@ -1,8 +1,9 @@
 import Search from './models/Search';
+import Recipe from './models/Recipe';
+import List from './models/List';
 import { elements, renderLoader, clearLoader } from './views/base';
 import * as searchView from './views/searchView';
 import * as recipeView from './views/recipeView';
-import Recipe from './models/Recipe';
 
 // forkify - api.herokuapp.com 
 
@@ -87,7 +88,7 @@ const controlRecipe = async () => {
         try{
             // Get recipe data and parse ingredients
             await state.recipe.getRecipe();
-            console.log(state.recipe.ingredients);
+            // console.log(state.recipe.ingredients);
             state.recipe.parseIngredients();
 
             // Calculate servings and time
@@ -123,5 +124,7 @@ elements.recipe.addEventListener('click', e => {
         state.recipe.updateServings('inc');
         recipeView.updateServingsIngredients(state.recipe)
     }
-    console.log(state.recipe);
+    // console.log(state.recipe);
 });
+
+window.l = new List();
