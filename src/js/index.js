@@ -8,6 +8,8 @@ import * as listView from './views/listView';
 import * as likesView from './views/likesView';
 import { elements, renderLoader, clearLoader } from './views/base';
 
+global._babelPolyfill = false;
+
 // forkify - api.herokuapp.com 
 
 // Recipe.js
